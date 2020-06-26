@@ -1,4 +1,12 @@
 <div>
+  <app-monitor-control></app-monitor-control>
+  <mat-tab-group>
+    <mat-tab label="Sync">
+      <app-observable-monitor name="of"></app-observable-monitor>
+    </mat-tab>
+    <mat-tab label="Second"> Content 2 </mat-tab>
+    <mat-tab label="Third"> Content 3 </mat-tab>
+  </mat-tab-group>
   <button (click)="fromEventObservable()">observable fromEvent</button>
   <button (click)="fromPromiseObservable()">observable fromPromise</button>
   <button (click)="timerObservable()">observable timer</button>
