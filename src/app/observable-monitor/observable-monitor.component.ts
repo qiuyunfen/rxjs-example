@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {TimeService} from '../time.service';
 
 @Component({
   selector: 'app-observable-monitor',
@@ -10,9 +11,13 @@ export class ObservableMonitorComponent implements OnInit {
   @Input()
   name = '';
 
-  constructor() { }
+  constructor(private timeService: TimeService) {
+  }
 
   ngOnInit() {
+    this.timeService.currentStatus.subscribe(message => {
+      console.log('------------', message);
+    });
   }
 
 }
