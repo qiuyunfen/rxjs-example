@@ -9,9 +9,11 @@ import { MonitorControlComponent } from './monitor-control/monitor-control.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
 import { ObservableMonitorComponent } from './observable-monitor/observable-monitor.component';
 import { MultipleComponent } from './multiple/multiple.component';
 import { SubjectComponent } from './subject/subject.component';
+import { HighObservableComponent } from './high-observable/high-observable.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { SubjectComponent } from './subject/subject.component';
     ObservableMonitorComponent,
     MultipleComponent,
     SubjectComponent,
+    HighObservableComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import { SubjectComponent } from './subject/subject.component';
     BrowserAnimationsModule,
     MatTabsModule,
     MatButtonModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

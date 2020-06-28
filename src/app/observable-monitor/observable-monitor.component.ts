@@ -41,6 +41,7 @@ export class ObservableMonitorComponent implements OnInit {
   observe() {
     this.subject$.next({ type: MONITOR.SUBSCRIBE });
     this.observable.subscribe((value) => {
+      console.log(value);
       this.subject$.next({ value: JSON.stringify(value), type: MONITOR.VALUE });
     });
   }
