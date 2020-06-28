@@ -1,0 +1,16 @@
+<div>
+  <app-monitor-control></app-monitor-control>
+  <mat-tab-group>
+    <mat-tab label="Sync">
+      <app-observable-monitor name="error" [observable]="error$"></app-observable-monitor>
+      <app-observable-monitor name="catch" [observable]="catch$"></app-observable-monitor>
+      <app-observable-monitor name="retry" [observable]="retry$"></app-observable-monitor>
+    </mat-tab>
+<!--    <mat-tab label="Async">-->
+<!--      <app-observable-monitor name="interval" [observable]="interval$"></app-observable-monitor>-->
+<!--      <app-observable-monitor name="timer" [observable]="timer$"></app-observable-monitor>-->
+<!--      <app-observable-monitor name="fromEvent" [observable]="fromEvent$"></app-observable-monitor>-->
+<!--      <app-observable-monitor name="create" [observable]="create$"></app-observable-monitor>-->
+<!--    </mat-tab>-->
+  </mat-tab-group>
+</div>

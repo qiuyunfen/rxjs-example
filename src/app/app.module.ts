@@ -14,6 +14,7 @@ import { ObservableMonitorComponent } from './observable-monitor/observable-moni
 import { MultipleComponent } from './multiple/multiple.component';
 import { SubjectComponent } from './subject/subject.component';
 import { HighObservableComponent } from './high-observable/high-observable.component';
+import { ErrorHandleComponent } from './error-handle/error-handle.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HighObservableComponent } from './high-observable/high-observable.compo
     MultipleComponent,
     SubjectComponent,
     HighObservableComponent,
+    ErrorHandleComponent,
   ],
   imports: [
     BrowserModule,

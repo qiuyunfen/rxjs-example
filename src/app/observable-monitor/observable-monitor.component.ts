@@ -41,8 +41,9 @@ export class ObservableMonitorComponent implements OnInit {
   observe() {
     this.subject$.next({ type: MONITOR.SUBSCRIBE });
     this.observable.subscribe((value) => {
-      console.log(value);
       this.subject$.next({ value: JSON.stringify(value), type: MONITOR.VALUE });
+    }, null, () => {
+      this.subject$.complete();
     });
   }
 
@@ -62,7 +63,6 @@ export class ObservableMonitorComponent implements OnInit {
 
   appendValue(value) {
     if (value && value.type === MONITOR.VALUE) {
-      console.log(value)
       const node = document.createElement('span');
       const textnode = document.createTextNode(value.value);
       node.appendChild(textnode);
