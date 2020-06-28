@@ -1,6 +1,6 @@
 <div>
   <app-monitor-control></app-monitor-control>
-  <app-observable-monitor name="high observable" [observable]="ho$"></app-observable-monitor>
+  <app-observable-monitor name="high observable" [observable]="ho$" [isHigh]="true"></app-observable-monitor>
   <mat-tab-group>
     <mat-tab label="mergeAll">
       <app-observable-monitor name="mergeAll" [observable]="merge$"></app-observable-monitor>
