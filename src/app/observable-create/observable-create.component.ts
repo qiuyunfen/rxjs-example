@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {from, fromEvent, interval, Observable, of, timer} from 'rxjs';
+import {from, fromEvent, interval, Observable, of, range, timer} from 'rxjs';
 import {fromPromise} from 'rxjs/internal-compatibility';
 
 @Component({
@@ -11,10 +11,14 @@ export class ObservableCreateComponent implements OnInit {
 
   of$: Observable<any>;
   from$: Observable<any>;
+  range$: Observable<any>;
+  interval$: Observable<any>;
 
   constructor() {
     this.of$ = of('o');
     this.from$ = from([1, 2, 3]);
+    this.range$ = range(1, 3);
+    this.interval$ = interval(1000);
   }
 
   ngOnInit() {

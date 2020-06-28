@@ -31,6 +31,7 @@ export class ObservableMonitorComponent implements OnInit {
   }
 
   observe() {
+    this.subject$.next({ type: MONITOR.SUBSCRIBE });
     this.observable.subscribe((value) => {
       this.subject$.next({ value: JSON.stringify(value), type: MONITOR.VALUE });
     });
@@ -50,20 +51,28 @@ export class ObservableMonitorComponent implements OnInit {
       node.style.left = document.getElementById('timeline').style.width;
       node.style.position = 'absolute';
       this.timeline.nativeElement.appendChild(node);
+    } else if (value && value.type === MONITOR.SUBSCRIBE) {
+      const node = document.createElement('span');
+      const textnode = document.createTextNode('|');
+      node.appendChild(textnode);
+      node.style.left = document.getElementById('timeline').style.width;
+      node.style.position = 'absolute';
+      this.timeline.nativeElement.appendChild(node);
     }
   }
 
   ngOnInit() {
+    const s = this.subject.subscribe((value) => {
+      this.appendValue(value);
+    });
+
     this.timeService.currentStatus.subscribe(status => {
       if (status) {
         this.globalID = requestAnimationFrame(this.repeatOften.bind(this));
       } else if (this.globalID) {
         cancelAnimationFrame(this.globalID);
+        s.unsubscribe();
       }
-    });
-
-    this.subject.subscribe((value) => {
-      this.appendValue(value);
     });
   }
 

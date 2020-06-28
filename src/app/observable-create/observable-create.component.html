@@ -4,9 +4,11 @@
     <mat-tab label="Sync">
       <app-observable-monitor name="of" [observable]="of$"></app-observable-monitor>
       <app-observable-monitor name="from" [observable]="from$"></app-observable-monitor>
+      <app-observable-monitor name="range" [observable]="range$"></app-observable-monitor>
     </mat-tab>
-    <mat-tab label="Second"> Content 2 </mat-tab>
-    <mat-tab label="Third"> Content 3 </mat-tab>
+    <mat-tab label="Async">
+      <app-observable-monitor name="interval" [observable]="interval$"></app-observable-monitor>
+    </mat-tab>
   </mat-tab-group>
   <button (click)="fromEventObservable()">observable fromEvent</button>
   <button (click)="fromPromiseObservable()">observable fromPromise</button>
