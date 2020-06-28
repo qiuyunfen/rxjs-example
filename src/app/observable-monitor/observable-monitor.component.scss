@@ -1,6 +1,13 @@
 .timeline {
   margin: 10px 10px;
   width: 0px;
-  height: 10px;
+  height: 20px;
   background: bisque;
+  position: relative;
+
+  span {
+    position: relative;
+    top: 0px;
+    background: aquamarine;
+  }
 }
