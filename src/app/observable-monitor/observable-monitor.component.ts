@@ -26,9 +26,14 @@ export class ObservableMonitorComponent implements OnInit {
   @Input()
   autoSub = false;
 
+  @Input()
+  isSubject = false;
+
   subject$ = new BehaviorSubject(null);
   subject = this.subject$ as Observable<any>;
   globalID;
+  subscription;
+  current = 0;
 
   constructor(private timeService: TimeService) {
   }
@@ -40,6 +45,14 @@ export class ObservableMonitorComponent implements OnInit {
     });
   }
 
+  next() {
+    this.observable.next(this.current++);
+  }
+
+  complete() {
+    this.observable.complete();
+  }
+
   repeatOften() {
     const width = this.timeline.nativeElement.style.width.slice(0, -2) || '0';
     this.timeline.nativeElement.style.width = parseInt(width) + 1 + 'px';
@@ -48,6 +61,7 @@ export class ObservableMonitorComponent implements OnInit {
 
   appendValue(value) {
     if (value && value.type === MONITOR.VALUE) {
+      console.log(value)
       const node = document.createElement('span');
       const textnode = document.createTextNode(value.value);
       node.appendChild(textnode);
@@ -65,7 +79,7 @@ export class ObservableMonitorComponent implements OnInit {
   }
 
   ngOnInit() {
-    const s = this.subject.subscribe((value) => {
+     this.subscription = this.subject.subscribe((value) => {
       this.appendValue(value);
     });
 
@@ -77,7 +91,7 @@ export class ObservableMonitorComponent implements OnInit {
         }
       } else if (this.globalID) {
         cancelAnimationFrame(this.globalID);
-        s.unsubscribe();
+        this.subscription.unsubscribe();
       }
     });
   }

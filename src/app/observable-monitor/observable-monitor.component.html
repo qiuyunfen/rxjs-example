@@ -1,5 +1,8 @@
 <div>
   <p>{{name}}</p>
-  <button mat-raised-button color="primary" (click)="observe()">observe</button>
+  <button *ngIf="!isSubject" mat-raised-button color="primary" (click)="observe()">observe</button>
+
+  <button *ngIf="isSubject" mat-raised-button color="primary" (click)="next()">next</button>
+  <button *ngIf="isSubject" mat-raised-button color="accent" (click)="complete()">complete</button>
   <div id="timeline" #timeline class="timeline"></div>
 </div>

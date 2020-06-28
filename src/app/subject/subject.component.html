@@ -1,0 +1,21 @@
+<div>
+  <app-monitor-control></app-monitor-control>
+  <mat-tab-group>
+    <mat-tab label="Subject">
+      <app-observable-monitor name="Subject" [observable]="subject$" [isSubject]="true" [autoSub]="true"></app-observable-monitor>
+      <app-observable-monitor name="Subscription" [observable]="subject$"></app-observable-monitor>
+    </mat-tab>
+    <mat-tab label="ReplaySubject">
+      <app-observable-monitor name="subject" [observable]="replaySubject$" [isSubject]="true" [autoSub]="true"></app-observable-monitor>
+      <app-observable-monitor name="Subscription" [observable]="replaySubject$"></app-observable-monitor>
+    </mat-tab>
+    <mat-tab label="BehaviorSubject">
+    <app-observable-monitor name="subject" [observable]="behaviorSubject$" [isSubject]="true" [autoSub]="true"></app-observable-monitor>
+    <app-observable-monitor name="Subscription" [observable]="behaviorSubject$"></app-observable-monitor>
+  </mat-tab>
+    <mat-tab label="AsyncSubject">
+      <app-observable-monitor name="subject" [observable]="asyncSubject$" [isSubject]="true" [autoSub]="true"></app-observable-monitor>
+      <app-observable-monitor name="Subscription" [observable]="asyncSubject$"></app-observable-monitor>
+    </mat-tab>
+  </mat-tab-group>
+</div>

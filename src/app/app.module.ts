@@ -11,6 +11,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonModule} from '@angular/material/button';
 import { ObservableMonitorComponent } from './observable-monitor/observable-monitor.component';
 import { MultipleComponent } from './multiple/multiple.component';
+import { SubjectComponent } from './subject/subject.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MultipleComponent } from './multiple/multiple.component';
     MonitorControlComponent,
     ObservableMonitorComponent,
     MultipleComponent,
+    SubjectComponent,
   ],
   imports: [
     BrowserModule,
