@@ -13,12 +13,25 @@ export class ObservableCreateComponent implements OnInit {
   from$: Observable<any>;
   range$: Observable<any>;
   interval$: Observable<any>;
+  timer$: Observable<any>;
+  fromEvent$: Observable<any>;
+  create$: Observable<any>;
 
   constructor() {
     this.of$ = of('o');
     this.from$ = from([1, 2, 3]);
     this.range$ = range(1, 3);
     this.interval$ = interval(1000);
+    this.timer$ = timer(0, 1000);
+    this.fromEvent$ = fromEvent(window, 'keydown');
+    this.create$ = Observable.create((observer) => {
+      observer.next('1');
+      setTimeout(() => {
+        observer.next('2');
+        observer.complete();
+      }, 1000);
+    });
+
   }
 
   ngOnInit() {

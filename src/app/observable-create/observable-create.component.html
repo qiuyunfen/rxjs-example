@@ -8,11 +8,9 @@
     </mat-tab>
     <mat-tab label="Async">
       <app-observable-monitor name="interval" [observable]="interval$"></app-observable-monitor>
+      <app-observable-monitor name="timer" [observable]="timer$"></app-observable-monitor>
+      <app-observable-monitor name="fromEvent" [observable]="fromEvent$"></app-observable-monitor>
+      <app-observable-monitor name="create" [observable]="create$"></app-observable-monitor>
     </mat-tab>
   </mat-tab-group>
-  <button (click)="fromEventObservable()">observable fromEvent</button>
-  <button (click)="fromPromiseObservable()">observable fromPromise</button>
-  <button (click)="timerObservable()">observable timer</button>
-  <button (click)="intervalObservable()">observable interval</button>
-  <button (click)="ofObservable()">observable of</button>
 </div>
