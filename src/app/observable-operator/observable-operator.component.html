@@ -1,10 +1,40 @@
+<!--<div>-->
+<!--  <button (click)="map()">map</button>-->
+<!--  <button (click)="filter()">filter</button>-->
+<!--  <button (click)="first()">first</button>-->
+<!--  <button (click)="last()">last</button>-->
+<!--  <button (click)="throttle()">throttle</button>-->
+<!--  <button (click)="debounce()">debounce</button>-->
+<!--  <button (click)="scan()">scan</button>-->
+<!--  <button (click)="switchMap()">switchMap</button>-->
+<!--</div>-->
+
 <div>
-  <button (click)="map()">map</button>
-  <button (click)="filter()">filter</button>
-  <button (click)="first()">first</button>
-  <button (click)="last()">last</button>
-  <button (click)="throttle()">throttle</button>
-  <button (click)="debounce()">debounce</button>
-  <button (click)="scan()">scan</button>
-  <button (click)="switchMap()">switchMap</button>
+  <app-monitor-control></app-monitor-control>
+  <mat-tab-group>
+    <mat-tab label="filter">
+      <app-observable-monitor name="filter" [observable]="filter$"></app-observable-monitor>
+      <app-observable-monitor name="take" [observable]="take$"></app-observable-monitor>
+      <app-observable-monitor name="distinct" [observable]="distinct$"></app-observable-monitor>
+      <app-observable-monitor name="distinctUntilChanged" [observable]="distinctUntilChanged$"></app-observable-monitor>
+    </mat-tab>
+    <mat-tab label="takeUntil">
+      <app-observable-monitor name="interval" [observable]="interval$" [autoSub]="true"></app-observable-monitor>
+      <app-observable-monitor name="takeUtilSign" [observable]="takeUtilSign$" [autoSub]="true"></app-observable-monitor>
+      <app-observable-monitor name="takeUtil" [observable]="takeUtil$" [autoSub]="true"></app-observable-monitor>
+    </mat-tab>
+    <mat-tab label="Combination">
+      <app-observable-monitor name="startWith" [observable]="startWith$"></app-observable-monitor>
+<!--      <app-observable-monitor name="timer" [observable]="timer$"></app-observable-monitor>-->
+<!--      <app-observable-monitor name="fromEvent" [observable]="fromEvent$"></app-observable-monitor>-->
+<!--      <app-observable-monitor name="create" [observable]="create$"></app-observable-monitor>-->
+    </mat-tab>
+    <mat-tab label="Transformation">
+      <app-observable-monitor name="map" [observable]="map$"></app-observable-monitor>
+      <app-observable-monitor name="mapTo" [observable]="mapTo$"></app-observable-monitor>
+      <app-observable-monitor name="pluck" [observable]="pluck$"></app-observable-monitor>
+      <app-observable-monitor name="reduce" [observable]="reduce$"></app-observable-monitor>
+      <app-observable-monitor name="scan" [observable]="scan$"></app-observable-monitor>
+    </mat-tab>
+  </mat-tab-group>
 </div>

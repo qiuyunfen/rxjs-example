@@ -1,6 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {from, interval, of, range} from 'rxjs';
-import {debounce, filter, first, last, map, scan, switchMap, throttle} from 'rxjs/operators';
+import {from, interval, Observable, of, range, timer} from 'rxjs';
+import {
+  debounce,
+  distinct,
+  distinctUntilChanged,
+  filter,
+  first,
+  last,
+  map, mapTo, pluck, reduce,
+  scan,
+  startWith,
+  switchMap,
+  take, takeUntil,
+  throttle
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-observable-operator',
@@ -9,7 +22,39 @@ import {debounce, filter, first, last, map, scan, switchMap, throttle} from 'rxj
 })
 export class ObservableOperatorComponent implements OnInit {
 
-  constructor() { }
+  interval$: Observable<any>;
+  filter$: Observable<any>;
+  take$: Observable<any>;
+  distinct$: Observable<any>;
+  distinctUntilChanged$: Observable<any>;
+  takeUtil$: Observable<any>;
+  takeUtilSign$: Observable<any>;
+
+  startWith$: Observable<any>;
+
+  map$: Observable<any>;
+  mapTo$: Observable<any>;
+  pluck$: Observable<any>;
+  reduce$: Observable<any>;
+  scan$: Observable<any>;
+
+  constructor() {
+    this.interval$ = interval(1000);
+    this.take$ = this.interval$.pipe(take(5));
+    this.filter$ = this.interval$.pipe(filter(x => x % 2 === 0));
+    this.distinct$ = this.take$.pipe(distinct(x => x % 2));
+    this.distinctUntilChanged$ = this.take$.pipe(map(x => x % 2), distinctUntilChanged());
+    this.startWith$ = this.take$.pipe(startWith('h'));
+
+    this.takeUtilSign$ = timer(5000);
+    this.takeUtil$ = this.interval$.pipe(takeUntil(this.takeUtilSign$));
+
+    this.map$ = this.interval$.pipe(map(i => ({i: i + 1})));
+    this.mapTo$ = this.interval$.pipe(mapTo('i'));
+    this.pluck$ = this.map$.pipe(pluck('i'));
+    this.reduce$ = this.take$.pipe(reduce(((acc, value) => acc + value), 0));
+    this.scan$ = this.take$.pipe(scan(((acc, value) => acc + value), 0));
+  }
 
   ngOnInit() {
   }

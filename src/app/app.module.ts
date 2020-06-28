@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonModule} from '@angular/material/button';
 import { ObservableMonitorComponent } from './observable-monitor/observable-monitor.component';
+import { MultipleComponent } from './multiple/multiple.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ObservableMonitorComponent } from './observable-monitor/observable-moni
     ObservableOperatorComponent,
     MonitorControlComponent,
     ObservableMonitorComponent,
+    MultipleComponent,
   ],
   imports: [
     BrowserModule,

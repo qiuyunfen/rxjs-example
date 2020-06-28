@@ -23,6 +23,9 @@ export class ObservableMonitorComponent implements OnInit {
   @Input()
   observable;
 
+  @Input()
+  autoSub = false;
+
   subject$ = new BehaviorSubject(null);
   subject = this.subject$ as Observable<any>;
   globalID;
@@ -69,6 +72,9 @@ export class ObservableMonitorComponent implements OnInit {
     this.timeService.currentStatus.subscribe(status => {
       if (status) {
         this.globalID = requestAnimationFrame(this.repeatOften.bind(this));
+        if (this.autoSub) {
+          this.observe();
+        }
       } else if (this.globalID) {
         cancelAnimationFrame(this.globalID);
         s.unsubscribe();
