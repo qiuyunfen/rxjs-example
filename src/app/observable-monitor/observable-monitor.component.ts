@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {TimeService} from '../time.service';
 import {BehaviorSubject, Observable} from 'rxjs';
 
@@ -15,6 +15,8 @@ const MONITOR = {
 })
 export class ObservableMonitorComponent implements OnInit {
 
+  // @ts-ignore
+  @ViewChild('timeline') timeline: ElementRef;
   @Input()
   name = '';
 
@@ -30,13 +32,13 @@ export class ObservableMonitorComponent implements OnInit {
 
   observe() {
     this.observable.subscribe((value) => {
-      this.subject$.next({ value, type: MONITOR.VALUE });
+      this.subject$.next({ value: JSON.stringify(value), type: MONITOR.VALUE });
     });
   }
 
   repeatOften() {
-    const width = document.getElementById('timeline').style.width.slice(0, -2) || '0';
-    document.getElementById('timeline').style.width = parseInt(width) + 1 + 'px';
+    const width = this.timeline.nativeElement.style.width.slice(0, -2) || '0';
+    this.timeline.nativeElement.style.width = parseInt(width) + 1 + 'px';
     this.globalID = requestAnimationFrame(this.repeatOften.bind(this));
   }
 
@@ -47,7 +49,7 @@ export class ObservableMonitorComponent implements OnInit {
       node.appendChild(textnode);
       node.style.left = document.getElementById('timeline').style.width;
       node.style.position = 'absolute';
-      document.getElementById('timeline').appendChild(node);
+      this.timeline.nativeElement.appendChild(node);
     }
   }
 
@@ -61,7 +63,6 @@ export class ObservableMonitorComponent implements OnInit {
     });
 
     this.subject.subscribe((value) => {
-      console.log(value);
       this.appendValue(value);
     });
   }
