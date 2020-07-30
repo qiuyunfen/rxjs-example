@@ -59,8 +59,6 @@ export class ObservableMonitorComponent implements OnInit {
       } else {
         this.subject$.next({ value: JSON.stringify(value), type: MONITOR.VALUE });
       }
-    }, null, () => {
-      this.subject$.complete();
     });
   }
 

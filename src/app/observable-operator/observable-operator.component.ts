@@ -47,27 +47,27 @@ export class ObservableOperatorComponent implements OnInit {
 
   constructor() {
     this.interval$ = interval(1000);
-    this.take$ = this.interval$.pipe(take(5));
     this.filter$ = this.interval$.pipe(filter(x => x % 2 === 0));
+    this.take$ = this.interval$.pipe(take(5));
     this.distinct$ = this.take$.pipe(distinct(x => x % 2));
-    this.distinctUntilChanged$ = this.take$.pipe(map(x => x % 2), distinctUntilChanged());
-    this.startWith$ = this.take$.pipe(startWith('h'));
+    // this.distinctUntilChanged$ = this.take$.pipe(map(x => x % 2), distinctUntilChanged());
 
     this.takeUtilSign$ = timer(5000);
     this.takeUtil$ = this.interval$.pipe(takeUntil(this.takeUtilSign$));
 
-    this.map$ = this.interval$.pipe(map(i => ({i: i + 1})));
-    this.mapTo$ = this.interval$.pipe(mapTo('i'));
-    this.pluck$ = this.map$.pipe(pluck('i'));
-    this.reduce$ = this.take$.pipe(reduce(((acc, value) => acc + value), 0));
-    this.scan$ = this.take$.pipe(scan(((acc, value) => acc + value), 0));
-
+    // this.startWith$ = this.take$.pipe(startWith('h'));
     this.observable1$ = timer(0, 2000).pipe(map(i => String.fromCharCode(97 + i)), take(2));
     this.observable2$ = timer(1000, 2000).pipe(take(3));
     this.merge$ = this.observable1$.pipe(merge(this.observable2$));
-    this.combineLatest$ = combineLatest(this.observable1$, this.observable2$);
     this.concat$ = this.observable1$.pipe(concat(this.observable2$));
-    this.forkJoin$ = forkJoin(this.observable1$, this.observable2$);
+    this.combineLatest$ = combineLatest(this.observable1$, this.observable2$);
+    // this.forkJoin$ = forkJoin(this.observable1$, this.observable2$);
+
+    this.map$ = this.interval$.pipe(map(i => ({i: i + 1})));
+    // this.mapTo$ = this.interval$.pipe(mapTo('i'));
+    // this.pluck$ = this.map$.pipe(pluck('i'));
+    this.reduce$ = this.take$.pipe(reduce(((acc, value) => acc + value), 0));
+    this.scan$ = this.take$.pipe(scan(((acc, value) => acc + value), 0));
   }
 
   ngOnInit() {

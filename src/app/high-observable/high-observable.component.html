@@ -1,27 +1,27 @@
 <div>
   <app-monitor-control></app-monitor-control>
-  <app-observable-monitor name="high observable" [observable]="ho$" [isHigh]="true"></app-observable-monitor>
+  <app-observable-monitor name="high observable" [observable]="ho$" [isHigh]="true" [autoSub]="true"></app-observable-monitor>
   <mat-tab-group>
     <mat-tab label="mergeAll">
-      <app-observable-monitor name="mergeAll" [observable]="merge$"></app-observable-monitor>
+      <app-observable-monitor name="mergeAll" [observable]="merge$" [autoSub]="true"></app-observable-monitor>
     </mat-tab>
     <mat-tab label="combineAll">
-      <app-observable-monitor name="combineAll" [observable]="combine$"></app-observable-monitor>
+      <app-observable-monitor name="combineAll" [observable]="combine$" [autoSub]="true"></app-observable-monitor>
     </mat-tab>
     <mat-tab label="concatAll">
-      <app-observable-monitor name="concatAll" [observable]="concat$"></app-observable-monitor>
+      <app-observable-monitor name="concatAll" [observable]="concat$" [autoSub]="true"></app-observable-monitor>
     </mat-tab>
-    <mat-tab label="switchAll">
-      <app-observable-monitor name="switchAll" [observable]="switchAll$"></app-observable-monitor>
-    </mat-tab>
+<!--    <mat-tab label="switchAll">-->
+<!--      <app-observable-monitor name="switchAll" [observable]="switchAll$" [autoSub]="true"></app-observable-monitor>-->
+<!--    </mat-tab>-->
     <mat-tab label="mergeMap">
-      <app-observable-monitor name="mergeMap" [observable]="mergeMap$"></app-observable-monitor>
+      <app-observable-monitor name="mergeMap" [observable]="mergeMap$" [autoSub]="true"></app-observable-monitor>
     </mat-tab>
     <mat-tab label="concatMap">
-      <app-observable-monitor name="concatMap" [observable]="concatMap$"></app-observable-monitor>
+      <app-observable-monitor name="concatMap" [observable]="concatMap$" [autoSub]="true"></app-observable-monitor>
     </mat-tab>
-    <mat-tab label="switchMap">
-      <app-observable-monitor name="switchMap" [observable]="switchMap$"></app-observable-monitor>
-    </mat-tab>
+<!--    <mat-tab label="switchMap">-->
+<!--      <app-observable-monitor name="switchMap" [observable]="switchMap$" [autoSub]="true"></app-observable-monitor>-->
+<!--    </mat-tab>-->
   </mat-tab-group>
 </div>

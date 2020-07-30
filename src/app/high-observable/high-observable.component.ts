@@ -37,7 +37,7 @@ export class HighObservableComponent implements OnInit {
     this.merge$ = this.ho$.pipe(mergeAll());
     this.combine$ = this.ho$.pipe(combineAll());
     this.concat$ = this.ho$.pipe(concatAll());
-    this.switchAll$ = this.ho$.pipe(switchAll());
+    // this.switchAll$ = this.ho$.pipe(switchAll());
 
     this.timer$ = timer(1000).pipe(
       mapTo(0),
@@ -46,7 +46,7 @@ export class HighObservableComponent implements OnInit {
     const observables = [this.ob1$, this.ob2$, this.ob3$];
     this.mergeMap$ = this.timer$.pipe(mergeMap(i => observables[i]));
     this.concatMap$ = this.timer$.pipe(concatMap(i => observables[i]));
-    this.switchMap$ = this.timer$.pipe(switchMap(i => observables[i]));
+    // this.switchMap$ = this.timer$.pipe(switchMap(i => observables[i]));
   }
 
   ngOnInit() {

@@ -16,9 +16,9 @@ export class MultipleComponent implements OnInit {
 
   constructor() {
     this.interval$ = interval(1000).pipe(take(5));
-    this.share$ = this.interval$.pipe(share());
     this.publish$ = this.interval$.pipe(publish(), refCount());
-    this.shareReplay$ = this.interval$.pipe(shareReplay(1));
+    this.share$ = this.interval$.pipe(share());
+    // this.shareReplay$ = this.interval$.pipe(shareReplay(1));
   }
 
   ngOnInit() {
